@@ -1,0 +1,91 @@
+<div class="container-fluid">
+  <div class="row flex-xl-nowrap">
+    <app-side-menu></app-side-menu>
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content">
+      <div class="wrap">
+        <div>
+          <h3 class="d-flex align-items-center text-align-center">
+            {{ title }}
+          </h3>
+          
+        </div>
+        <button 
+          class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3 collapsed" 
+          type="button" 
+          data-toggle="collapse" 
+          data-target="#bd-docs-nav" 
+          aria-controls="bd-docs-nav" 
+          aria-expanded="false" 
+          aria-label="Toggle docs navigation">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false">
+            <title>Menu</title>
+            <path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path>
+          </svg>
+        </button>
+      </div>
+
+      <div class="total">Total : {{calcTotal()}}</div>
+ 
+      <form 
+        [formGroup]="initForm"
+        (ngSubmit)="onSubmit(initForm.value)">
+        <fieldset>
+        <div class="form-group">
+          <label>
+            Select customers
+            <select 
+              class="form-control" 
+              formControlName="customer">
+              <option 
+                *ngFor="let customer of customers$ | async" 
+                [value]="customer.id"
+                >
+                {{customer.name}}
+              </option>
+            </select>
+          </label>
+          <label>
+            Select product
+            <select 
+              class="form-control"
+              formControlName="product">
+              <option 
+                *ngFor="let product of products$ | async" 
+                [value]="product.id "
+                >
+                {{product.name}} : {{product.price}}
+              </option>
+            </select>
+          </label>
+
+          <label for="discount">
+            Discount - %
+            <input 
+              type="text"
+              class="form-control"  
+              formControlName="discount"
+              value = ""
+              id="discount">
+          </label>
+
+          <label for="quantity">
+            Quantity
+            <input
+              type="text"  
+              class="form-control"
+              formControlName="quantity" 
+              value = "" 
+              id="quantity">
+          </label>
+          <button 
+            type="submit"
+            class="btn btn-success btn-custom"
+            [disabled]="!initForm.value">
+            Save
+          </button>
+        </div>
+      </fieldset>
+      </form>
+    </main>
+  </div>
+</div>

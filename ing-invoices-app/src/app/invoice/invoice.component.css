@@ -1,0 +1,25 @@
+:host{
+  width: 100%;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.text-align-center{
+  text-align: center;
+}
+
+.wrap{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn-invoice-custom{ 
+  display: block;
+  margin: 40px 40%;
+}
+
+
+

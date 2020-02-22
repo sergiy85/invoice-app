@@ -1,0 +1,17 @@
+.navbar-custom{
+  padding: .5rem 4rem;
+}
+
+.auth{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-auth-custom{
+  display: block;
+}
+
+.btn-auth-custom:first-child{
+  margin-right: 10px;
+}

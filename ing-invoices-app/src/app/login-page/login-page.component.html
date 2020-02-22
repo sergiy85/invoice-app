@@ -1,0 +1,50 @@
+<div class="container">
+<form 
+  [formGroup]="loginForm" 
+  (ngSubmit)="onSubmit()">
+  <fieldset>
+    <legend>
+      <h3>Login</h3>
+    </legend>
+    <div class="form-group">
+       
+      <label>
+        E-mail:
+        <input type="text" class="form-control" formControlName="email">
+        <span 
+          *ngIf="loginForm.get('email').hasError('required') && loginForm.get('email').dirty"
+          class="alert alert-danger alert-width">
+          Email is required.
+        </span>
+        <span 
+          *ngIf="loginForm.get('email').hasError('email')"
+          class="alert alert-danger alert-width">
+          Email is error.
+        </span>
+      </label>
+      <label>
+        Password:
+        <input type="password" class="form-control" formControlName="password">
+        <div 
+        *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').dirty"
+        class="alert alert-danger alert-width">
+          <span>Password is required </span>
+        </div>
+        <div
+          *ngIf="loginForm.get('password').hasError('minlength') && !loginForm.get('password').hasError('required')"
+          class="alert alert-danger alert-width">
+          <span>It should be minimum 8 symbols</span>
+        </div>
+      </label>
+    </div>
+
+    <button 
+      type="submit"
+      class="btn btn-default"
+      (click) = "onSubmit(loginForm.value, loginForm.valid)"
+      [disabled]="loginForm.invalid">
+      Submit
+    </button>
+  </fieldset>
+</form>
+</div>

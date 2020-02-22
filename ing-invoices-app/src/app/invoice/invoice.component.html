@@ -1,0 +1,70 @@
+<div class="container-fluid">
+  <div class="row flex-xl-nowrap">
+    <app-side-menu></app-side-menu>
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content">
+      <div class="wrap">
+        <div>
+          <h3 class="d-flex align-items-center text-align-center">
+            My invoices
+        </h3>
+        </div>
+        <button 
+          class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3 collapsed" 
+          type="button" 
+          data-toggle="collapse" 
+          data-target="#bd-docs-nav" 
+          aria-controls="bd-docs-nav" 
+          aria-expanded="false" 
+          aria-label="Toggle docs navigation">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false">
+            <title>Menu</title>
+            <path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path>
+          </svg>
+        </button>
+      </div>
+
+       <a
+        href = "#"
+        routerLink = "/create-invoice"
+        class = "btn btn-primary btn-invoice-custom">
+        Create New Invoice
+      </a>
+      <div class="table-responsive-md">
+        <table 
+          class="table table-dark" 
+          *ngFor="let invoice of invoices$ | async">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Discount</th>
+              <th scope="col">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td >{{invoice.id}}</td>
+              <td>{{invoice.discount}}</td>
+              <td>{{invoice.total}}</td>
+              <td>
+                <button 
+                  type="button" 
+                  class="btn btn-warning"
+                  (click)="editInvoice(invoice.id)">
+                  Edit
+                </button>
+              </td>
+              <td>
+                <input 
+                  type="button" 
+                  value="Delete" 
+                  class="btn btn-danger"
+                  (click)="deleteInvoice(invoice.id)"/>
+              </td>
+              </tr>
+            <tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</div>

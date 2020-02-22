@@ -1,0 +1,22 @@
+.form-group{
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+fieldset{
+  text-align: center;
+}
+
+label{
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+input.ng-touched.ng-invalid {
+  border:1px solid #dc3545;
+}
+
+input.ng-touched.ng-valid {
+  border: 1px solid #28a745;
+}

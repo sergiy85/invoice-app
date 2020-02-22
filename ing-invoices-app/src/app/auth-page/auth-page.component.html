@@ -1,0 +1,27 @@
+<header class="flex-column flex-md-row bd-navbar">
+  <nav class="navbar navbar-dark bg-dark navbar-custom">
+    <div class="home">
+      <a 
+        routerLink="/invoice" 
+        href="#">
+        Home
+      </a>
+    </div>
+    <div class="auth">
+      <a
+        routerLink="/login" 
+        href="#" 
+        class="btn btn-primary btn-auth-custom" >
+        Login
+      </a>
+      <a
+        routerLink="/register"
+        href="#" 
+        class="btn btn-success btn-auth-custom" >
+        Register
+      </a>
+    </div>
+  </nav>
+</header>
+
+<router-outlet></router-outlet>

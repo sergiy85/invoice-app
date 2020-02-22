@@ -1,0 +1,65 @@
+<div id="addProduct" class="modal fade">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" type="button" data-dismiss="modal">x</button>
+      </div>
+      <div class="modal-body">
+        
+        <form 
+          [formGroup]="addProductForm" 
+          (ngSubmit)="onSubmit()">
+          <fieldset>
+            <legend>
+              <h4 class="text-align-center">Add Product</h4>
+            </legend>
+            <div class="form-group wrapper">
+              <label>
+                Name:
+                <input type="text" class="form-control" formControlName="name">
+                <span 
+                  *ngIf="addProductForm.get('name').hasError('required') && addProductForm.get('name').dirty"
+                  class="alert alert-danger alert-width">
+                  Name is required.
+               </span>
+             </label>
+             <label>
+              Price:
+              <input type="text" class="form-control" formControlName="price">
+              <div 
+               *ngIf="addProductForm.get('price').hasError('required') && addProductForm.get('price').dirty"
+                class="alert alert-danger alert-width">
+                <span>Price is required </span>
+              </div>
+                <span 
+                  *ngIf="addProductForm.get('price').hasError('pattern')"
+                  class="alert alert-danger alert-width">
+                  It should be only numbers!
+                </span>
+             </label>
+             <label>
+              Currency:
+              <input type="text" class="form-control" formControlName="currency">
+                <div 
+                 *ngIf="addProductForm.get('currency').hasError('required') && addProductForm.get('currency').dirty"
+                  class="alert alert-danger alert-width">
+                <span>Currency is required </span>
+                </div>
+              </label>
+            </div>
+          </fieldset>
+        </form>
+          
+      </div>
+      <div class="modal-footer">
+        <button 
+          type="submit"
+          class="btn btn-default"
+          (click) = "onSubmit(addProductForm.value, addProductForm.valid)"
+          data-dismiss="modal"
+          [disabled]="addProductForm.invalid">
+          Submit
+        </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,78 @@
+:host{
+  width: 100%;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.text-align-center{
+  text-align: center;
+}
+
+.wrap{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn-invoice-custom{ 
+  display: block;
+  margin: 40px 40%;
+}
+
+/* quantity */
+
+.quantity {
+  position: relative;
+}
+
+input .quantity-control{
+  border: 0;
+  border-radius: 3px;
+  height: 30px;
+  max-width: 100px;
+  text-align: center;
+}
+
+button .btn-quantity {
+  outline: 0;
+  cursor: pointer;
+  height: 30px;
+  border: 0;
+  border-radius: 3px;
+  background: #0088cc;
+  color: #fff;
+}
+
+.form-group{
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+label{
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+fieldset{
+  text-align: center;
+}
+.total{
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.btn-custom{
+  width: 20%;
+  margin: 15px auto;
+}
+
+input.ng-touched.ng-invalid {
+  border:1px solid #dc3545;
+}
+
+input.ng-touched.ng-valid {
+  border: 1px solid #28a745;
+}

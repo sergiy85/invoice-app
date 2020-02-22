@@ -1,0 +1,75 @@
+<div class="container">
+<form 
+  [formGroup]="signUp" 
+  (ngSubmit)="onSubmit()">
+  <fieldset>
+    <legend>
+      <h3>Register</h3>
+    </legend>
+    <div 
+      class="form-group">
+      <label>
+        Name:
+        <input type="text" class="form-control" formControlName="name">
+        <span 
+          *ngIf="signUp.get('name').hasError('required') && signUp.get('name').dirty"
+          class="alert alert-danger alert-width">
+          Name is required 
+        </span>
+      </label> 
+      <label>
+        E-mail:
+        <input type="text" class="form-control" formControlName="email">
+        <span 
+          *ngIf="signUp.get('email').hasError('required') && signUp.get('email').dirty"
+          class="alert alert-danger alert-width">
+          Email is required.
+        </span>
+        <span 
+          *ngIf="signUp.get('email').hasError('email')"
+          class="alert alert-danger alert-width">
+          Email is error.
+        </span>
+      </label>
+      <label>
+      Password:
+      <input type="password" class="form-control" formControlName="password">
+      <div 
+        *ngIf="signUp.get('password').hasError('required') && signUp.get('password').dirty"
+        class="alert alert-danger alert-width">
+        <span>Password is required </span>
+      </div>
+      <div
+        *ngIf="signUp.get('password').hasError('minlength') && !signUp.get('password').hasError('required')"
+        class="alert alert-danger alert-width">
+          <span>It should be minimum 8 symbols</span>
+      </div>
+    </label>
+      <label>
+        Date of Birth:
+        <input type="text" class="form-control" placeholder="MM/DD/YYYY" formControlName="dob">
+        <span 
+          *ngIf="signUp.get('dob').hasError('required') 
+          && signUp.get('dob').dirty"
+          class="alert alert-danger alert-width">
+          Date is required
+        </span>
+        <span 
+          *ngIf="signUp.get('dob').hasError('pattern')"
+          class="alert alert-danger alert-width">
+          Date is error.
+        </span>
+      </label>
+      
+    </div>
+
+    <button 
+      type="submit"
+      class="btn btn-default"
+      (click) = "onSubmit(signUp.value, signUp.valid)"
+      [disabled]="signUp.invalid">
+      Submit
+    </button>
+  </fieldset>
+</form>
+</div>

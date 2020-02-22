@@ -1,0 +1,63 @@
+<div id="addCustomer" class="modal fade">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" type="button" data-dismiss="modal">x</button>
+      </div>
+    <div class="modal-body">
+      <form 
+        [formGroup]="addCustomerForm" 
+        (ngSubmit)="onSubmit()">
+        <fieldset>
+         <legend>
+           <h4 class="text-align-center">Add Customer</h4>
+         </legend>
+           <div class="form-group wrapper">
+             <label>
+              Name:
+              <input type="text" class="form-control" formControlName="name">
+              <span 
+                *ngIf="addCustomerForm.get('name').hasError('required') && addCustomerForm.get('name').dirty"
+                class="alert alert-danger alert-width">
+                Name is required.
+              </span>
+            </label>
+            <label>
+              Address:
+              <input type="text" class="form-control" formControlName="address">
+              <div 
+               *ngIf="addCustomerForm.get('address').hasError('required') && addCustomerForm.get('address').dirty"
+               class="alert alert-danger alert-width">
+               <span>Address is required </span>
+              </div>
+            </label>
+            <label>
+              Phone:
+              <input type="text" class="form-control" formControlName="phone">
+              <div 
+                *ngIf="addCustomerForm.get('phone').hasError('required') && addCustomerForm.get('phone').dirty"
+                class="alert alert-danger alert-width">
+                <span>Phone is required </span>
+              </div>
+              <div
+                *ngIf="addCustomerForm.get('phone').hasError('pattern')"
+                class="alert alert-danger alert-width">
+                <span>Please write correct number!</span>
+              </div>
+            </label>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button 
+          type="submit"
+          class="btn btn-default"
+          (click) = "onSubmit(addCustomerForm.value, addCustomerForm.valid)"
+          data-dismiss="modal"
+          [disabled]="addCustomerForm.invalid">
+          Submit
+      </button>
+    </div>
+  </div>
+</div>
